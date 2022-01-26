@@ -35,7 +35,7 @@ export class TodoComponent implements OnInit {
 
   addItem() {
     if (this.inputText != "") {
-      let data = new TodoItem(this.inputText, false);
+      let data = {description: this.inputText, action: false, index: this.getItemsFromLS().length + 1 };
       this.model.items.push(data);
       let items = this.getItemsFromLS();
       items.push(data);
@@ -69,7 +69,6 @@ export class TodoComponent implements OnInit {
     if(value != null) {
       items = JSON.parse(value);
     }
-
     return items;
   }
 
@@ -82,6 +81,19 @@ export class TodoComponent implements OnInit {
       }
     });
     localStorage.setItem("items",JSON.stringify(items));
+  }
+
+  deleteItem(item: TodoItem) {
+    console.log(item);
+    let items = this.getItemsFromLS();
+    localStorage.clear();
+      for(let i = 0; i < items.length; ++i){
+          if (items[i].index === item.index) {
+              items.splice(i,1);
+          }
+      }
+    localStorage.setItem("items",JSON.stringify(items));
+    this.model.items = this.getItemsFromLS();
   }
 
 }
