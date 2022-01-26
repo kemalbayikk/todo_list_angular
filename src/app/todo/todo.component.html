@@ -33,8 +33,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of getItems(); let i = index"
-                            [class]="{'bg-primary': item.action, 'bg-warning': !item.action}">
-                            <td>{{ i+1 }}</td>
+                            [class]="{'bg-primary': item.action, 'bg-warning': !item.action}" >
+                            <td>{{ item.index }}</td>
                             <td>{{ item.description }}</td>
                             <td>
                                 <!-- <div *ngIf="item.action">Done</div>
@@ -47,6 +47,9 @@
                             </td>
                             <td>
                                 <input type="checkbox" (change)="onActionChanged(item)" [(ngModel)]="item.action" name="" id="">
+                            </td>
+                            <td>
+                                <button class = "btn btn-danger" (click) = "deleteItem(item);">Delete</button>
                             </td>
                         </tr>
                     </tbody>
