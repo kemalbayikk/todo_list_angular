@@ -1,4 +1,4 @@
-# BASIC TODO APP WITH ANGULAR WITH USING LOCAL STORAGE 
+# BASIC TODO APP WITH ANGULAR
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
 
